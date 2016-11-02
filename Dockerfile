@@ -4,4 +4,4 @@ run pip install krakenex
 
 copy autosell.py autosell.py
 
-cmd python autosell.py
+cmd python -u autosell.py
