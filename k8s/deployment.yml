@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kraken-autosell
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kraken-autosell
+    spec:
+      containers:
+      - name: autosell
+        image: georgewhewell/kraken-autosell:latest
+        imagePullPolicy: Always
+        env:
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: kraken-secrets
+              key: api_key
+        - name: API_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: kraken-secrets
+              key: api_secret
