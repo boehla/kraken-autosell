@@ -8,6 +8,7 @@ from krakenex import API
 # Warning! Set these correctly :)
 CURRENCY_NAME = 'XETC'
 TRADE_PAIR = 'XETCXXBT'
+MIN_BALANCE = 0.1
 
 # Warning! Keep these secret :)
 KRAKEN_API_KEY = ''
@@ -54,7 +55,7 @@ if __name__ == '__main__':
         try:
                 balance = get_balance(kraken, CURRENCY_NAME)
                 log('Current balance: {} {}'.format(balance, CURRENCY_NAME))
-                if balance > 0:
+                if balance > MIN_BALANCE:
                         log('Checking for open trades..')
                         try:
                                 check_for_open_orders(kraken, TRADE_PAIR)
